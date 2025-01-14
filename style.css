@@ -1,0 +1,230 @@
+/* body{
+    background-color: #CCA1C9;
+} */
+
+/* h1{
+text-align: center;
+font-size: 200px;
+} */
+/* General Styling */
+body {
+    background-color: #449DD1;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #fff;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+p {
+    font-weight: bold;
+    color: #3943B7;
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+h1{
+    color: #0E0E52;
+}
+/* Buttons */
+#bud, #bud_alt {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    background-color: #150578;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#bud:hover, #bud_alt:hover {
+    background-color: #3943B7;
+    transform: scale(1.1);
+}
+
+
+/* Timer Circle */
+#timer {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    position: relative;
+}
+
+#timer svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+#timer circle {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 5;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    animation: countdown 7s linear forwards;
+}
+
+@keyframes countdown {
+    from {
+        stroke-dashoffset: 283;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+    button {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+}
+
+#textwindow {
+    /* background: rgba(0, 0, 0, 0.75); */
+    border-radius: 20px;
+    padding: 30px 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Input Field Styling */
+#input-container {
+    margin: 0 auto;
+    width: 100%;
+}
+
+#actual_text {
+    width: 80%;
+    padding: 15px;
+    justify-self: center;
+    font-size: 1rem;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+#actual_text::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#actual_text:focus {
+    border-color: #00c9ff;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Rounded Timer Div */
+#timer-container {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#timer {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Try Again Button */
+.try-again-btn {
+    justify-self: center;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color:#150578;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.try-again-btn:hover {
+    background-color: #3943B7;
+    transform: scale(1.1);
+}
+
+.try-again-btn:active {
+    transform: scale(1);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    #textwindow {
+        width: 95%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    #actual_text {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    #timer {
+        width: 80px;
+        height: 80px;
+        font-size: 1.2rem;
+    }
+
+    .try-again-btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}

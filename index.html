@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Second Danger</title>
+    <link href="style.css" rel ="stylesheet">
+</head>
+<body>
+    <div>
+    <h1>Welcome</h1>
+    <p> This is a spin-off of <span><a target="_blank" href = "https://www.squibler.io/dangerous-writing-prompt-app">this</a></span> website. </p>
+    <p>The rules are simple: stop writing for 7 consecutive seconds and all progress will be lost.</p>
+    <p>Want to try?</p>
+    <button id = "bud" onclick="gototext()">Yes</button>
+    <button id = "bud_alt" onclick="loadSucker()">No</button>
+    </div>
+</body>
+</html>
+<script>
+    document.getElementById("bud").onclick = function(){window.location = "text.html"};
+    function loadSucker() {
+        window.open("https://pin.it/5tt1alCuU", target = "_self");
+    }
+</script>

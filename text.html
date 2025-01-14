@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Second Danger</title>
+    <link href="style.css" rel ="stylesheet">
+</head>
+<body>
+    <div id = "textwindow">
+        <h1 class="animate__animated animate__fadeInDown">7 Second Danger: Keep Typing!</h1>
+        <input type="text" placeholder="Start Typing" id = "actual_text" onkeypress = "keep_time()" onkeyup="handleKeyUp(event)">
+        <!-- <p id = "timekeeper"></p> -->
+         <!-- Rounded Timer Div -->
+        <div id="timer-container">
+            <div id="timekeeper">
+                <span id="countdown">7</span>s
+            </div>
+        </div>
+        <button class="try-again-btn" style="display:none;" id = "rerun" onclick="resetTimer()">Try Again?</button>
+        <p id = "score_keeper" style="display: none;"></p>
+    </div>
+</body>
+</html>
+<script>
+    let scores = document.getElementById('score_keeper');
+    let text_box = document.getElementById("timekeeper");
+    let timer, timeoutVal = 1000;
+    let seconds = 7
+    let word_count = 1
+
+    //tracking how many words have been written
+    window.addEventListener('keydown', function(event){
+    if(event.keyCode === 32){
+        word_count += 1;
+    }
+    })
+    //loading high scores
+    scores.innerHTML = "Highest Word Count: " + localStorage.getItem("word_count");
+    scores.style.display = "block";
+
+    function handleKeyUp(e) {
+        window.clearTimeout(timer); // prevent errant multiple timeouts from being generated
+        timer = setInterval(countdown, 1000);
+    }
+    function countdown(){
+        if (seconds >7){
+            console.log("i came here");
+            seconds--;
+        }
+        else if (seconds > 0) {
+            text_box.innerHTML = "00: 0" + seconds;
+            seconds--;
+        } else {
+            document.getElementById("actual_text").value = " "
+            document.getElementById("rerun").style.display = "block"
+
+            if(word_count> Number(localStorage.getItem("word_count"))){
+                localStorage.setItem('word_count', word_count.toString()); 
+            }
+            text_box.innerHTML = "You were warned💀😂😂"
+            scores.innerHTML = "Highest Word Count: " + localStorage.getItem("word_count");
+            scores.style.display = "block";
+        }
+    }    
+    function keep_time(){
+        document.getElementById("rerun").style.display = "none";
+        seconds = 8;
+        text_box.innerHTML = "";
+    }
+    function resetTimer(){
+        document.getElementById("rerun").style.display = "none";
+        seconds = 8;
+        word_count = 1;
+        text_box.innerHTML = "";
+        document.getElementById("actual_text").value = "";
+        window.clearTimeout(timer); // prevent errant multiple timeouts from being generated      
+}
+</script>
