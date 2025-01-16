@@ -27,16 +27,9 @@
     let text_box = document.getElementById("timekeeper");
     let timer, timeoutVal = 1000;
     let seconds = 7
-    let word_count = 1
 
-    //tracking how many words have been written
-    window.addEventListener('keydown', function(event){
-    if(event.keyCode === 32){
-        word_count += 1;
-    }
-    })
+    //loading high scores from local storage
     if(localStorage.getItem("word_count")!= null){
-        //loading high scores
         scores.innerHTML = "Highest Word Count: " + localStorage.getItem("word_count");
         scores.style.display = "block";
     }
@@ -58,8 +51,9 @@
             text_box.innerHTML = "00: 0" + seconds;
             seconds--;
         } else {
-            document.getElementById("actual_text").value = " "
-            document.getElementById("rerun").style.display = "block"
+            let word_count = document.getElementById("actual_text").value.toString().trim().split(" ").length;
+            document.getElementById("actual_text").value = " ";
+            document.getElementById("rerun").style.display = "block";
 
             if(word_count> Number(localStorage.getItem("word_count"))){
                 localStorage.setItem('word_count', word_count.toString()); 
@@ -77,9 +71,9 @@
     function resetTimer(){
         document.getElementById("rerun").style.display = "none";
         seconds = 8;
-        word_count = 1;
+        word_count = 0;
         text_box.innerHTML = "";
         document.getElementById("actual_text").value = "";
         window.clearTimeout(timer); // prevent errant multiple timeouts from being generated      
-}
+    }
 </script>
