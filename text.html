@@ -35,10 +35,16 @@
         word_count += 1;
     }
     })
-    //loading high scores
-    scores.innerHTML = "Highest Word Count: " + localStorage.getItem("word_count");
-    scores.style.display = "block";
-
+    if(localStorage.getItem("word_count")!= null){
+        //loading high scores
+        scores.innerHTML = "Highest Word Count: " + localStorage.getItem("word_count");
+        scores.style.display = "block";
+    }
+    else{
+        scores.innerHTML = "Highest Word Count: 0";
+        scores.style.display = "block"; 
+    }
+    
     function handleKeyUp(e) {
         window.clearTimeout(timer); // prevent errant multiple timeouts from being generated
         timer = setInterval(countdown, 1000);
